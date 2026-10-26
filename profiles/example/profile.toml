@@ -1,0 +1,84 @@
+# EXAMPLE profile: a fictional person. Copy this folder to profiles/<you>/ and edit.
+# Every number here is a personal input, not a model assumption (those live in
+# docs/assumptions.md). Run any script with --profile <you>, or put your profile name in
+# .portfolio-profile at the repo root.
+
+name = "Alex Example (fictional)"
+horizon_years = 5                # how far ahead you're planning for this decision
+emergency_fund = 20_000          # never invested; taken from bank accounts first
+ai_cap_core_pct_stocks = 0.25    # optional: core AI basket as a share of all stocks
+ips_target = "SCV 80/20"         # optional: the candidate you've chosen
+review_by = "2031-10"            # optional: when to fully re-evaluate (indicators.py)
+
+# Held as-is outside the investable pool. Direct stocks are named by ticker.
+satellites = ["AAPL"]
+
+# Optional dip-buying rule: deploy the reserve as a 60/40 US/intl index falls from its high.
+[dip_buying]
+triggers = [0.25]
+fractions = [1.0]
+
+# What "broken" means for the reverse stress test.
+[failures]
+liquid_drawdown = 0.40
+networth_drawdown = 0.30
+lag_vs_benchmark = 0.10
+stocks_drawdown = 0.50
+real_networth_drawdown = 0.30  # net worth falls 30% after inflation (optional)
+
+# Candidate allocations: shares of the investable pool by asset class (must sum to 1).
+# Classes: us, intl, scv, bonds, tips, tips_short. reserve_usd: dip-buying cash held back
+# first, in dollars or "new_taxable".
+[candidates."Three-fund 80/20"]
+us = 0.56
+intl = 0.24
+bonds = 0.10
+tips = 0.10
+
+[candidates."SCV 80/20"]
+us = 0.44
+intl = 0.24
+scv = 0.12
+bonds = 0.10
+tips = 0.10
+
+[candidates."Defensive 75/25"]
+us = 0.3375
+intl = 0.2625
+scv = 0.15
+bonds = 0.125
+tips = 0.125
+
+[candidates."Aggressive 90/10"]
+us = 0.54
+intl = 0.27
+scv = 0.09
+bonds = 0.05
+tips = 0.05
+
+# Optional (indicators.py): market-concentration readings when the plan was made, and the
+# level at which each would argue for shrinking the hedges. Values are illustrative.
+[review_indicators.cape]
+baseline = 40.0          # US Shiller CAPE
+shrink_below = 28.0
+[review_indicators.sp500_top10]
+baseline = 0.40          # top-10 issuers' share of the S&P 500
+shrink_below = 0.28
+[review_indicators.core_ai_us_market]
+baseline = 0.28          # core AI basket's share of the US total market
+shrink_below = 0.22
+[review_indicators.intl_favored_share]
+baseline = 0.90          # share of forecasting firms favoring intl dev over US large
+shrink_below = 0.50
+
+# Savings streams: dollars per year or "max:<limit>" (data/contribution_limits.csv).
+[[contributions]]
+name = "401(k) deferrals"
+account = "workplace_401k"
+annual = 12_000
+years = 15
+
+[[contributions]]
+name = "Roth IRA"
+account = "roth_ira"
+annual = "max:ira"

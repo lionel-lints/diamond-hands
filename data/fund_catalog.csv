@@ -1,0 +1,49 @@
+key,block,note,expense_ratio_pct,er_source
+VTI,TOTAL_US,Vanguard Total Stock Market ETF,0.03,https://wealthvieu.com/vanguard-etfs/
+VTSAX,TOTAL_US,Vanguard Total Stock Market Index Admiral,0.04,https://wealthvieu.com/investing/vanguard/best-funds/
+FZROX,TOTAL_US,Fidelity ZERO Total Market Index,0.00,Fidelity ZERO fund (0% by design)
+FSKAX,TOTAL_US,Fidelity Total Market Index,,
+ITOT,TOTAL_US,iShares Core S&P Total US Stock Market,,
+SCHB,TOTAL_US,Schwab US Broad Market ETF,,
+VOO,SP500,Vanguard S&P 500 ETF,,
+VFIAX,SP500,Vanguard 500 Index Admiral,,
+IVV,SP500,iShares Core S&P 500,,
+SPY,SP500,SPDR S&P 500,,
+FXAIX,SP500,Fidelity 500 Index,,
+SSSYX,SP500,State Street Equity 500 Index K,0.02,employer plan fee disclosure (404a-5)
+VXUS,INTL,Vanguard Total International Stock ETF,0.05,https://advisors.vanguard.com/investments/products/vxus/vanguard-total-international-stock-etf
+VTIAX,INTL,Vanguard Total International Stock Index Admiral,,
+VFWAX,INTL,Vanguard FTSE All-World ex-US Index Admiral (no small caps; IXUS proxy),0.08,https://advisors.vanguard.com/investments/products/vfwax/vanguard-ftse-all-world-ex-us-index-fund-admiral-shares
+IXUS,INTL,iShares Core MSCI Total International Stock,,
+FTIHX,INTL,Fidelity Total International Index,,
+VEA,INTL_DEV,Vanguard FTSE Developed Markets ETF,,
+VTMGX,INTL_DEV,Vanguard Developed Markets Index Admiral,,
+EFA,INTL_DEV,iShares MSCI EAFE,,
+BTMKX,INTL_DEV,iShares MSCI EAFE International Index K,0.05,employer plan fee disclosure (404a-5)
+VWO,EM,Vanguard FTSE Emerging Markets ETF,,
+VEMAX,EM,Vanguard Emerging Markets Stock Index Admiral,0.13,employer plan fee disclosure (404a-5)
+VO,MID,Vanguard Mid-Cap ETF,,
+VIMAX,MID,Vanguard Morningstar Mid-Cap Index Admiral,0.05,employer plan fee disclosure (404a-5)
+VB,SMALL_BLEND,Vanguard Small-Cap ETF,,
+VSMAX,SMALL_BLEND,Vanguard Morningstar Small-Cap Index Admiral,0.05,employer plan fee disclosure (404a-5)
+TISBX,SMALL_BLEND,Nuveen Small Cap Blend Index R6 (Russell 2000),0.05,employer plan fee disclosure (404a-5)
+VBR,SCV,Vanguard Small-Cap Value ETF,0.05,https://wealthvieu.com/vanguard-etfs/
+VSIAX,SCV,Vanguard Morningstar Small-Cap Value Index Admiral,0.07,employer plan fee disclosure (404a-5)
+AVUV,SCV,Avantis US Small Cap Value ETF,0.25,https://www.avantisinvestors.com/avantis-investments/avantis-us-small-cap-value-etf/
+BND,BOND,Vanguard Total Bond Market ETF,0.03,https://wealthvieu.com/vanguard-etfs/
+VBTLX,BOND,Vanguard Total Bond Market Index Admiral,,
+VBILX,BOND,Vanguard Intermediate-Term Bond Index Admiral,0.06,employer plan fee disclosure (404a-5)
+AGG,BOND,iShares Core US Aggregate Bond,,
+FXNAX,BOND,Fidelity US Bond Index,,
+VAIPX,TIPS,Vanguard Inflation-Protected Securities Admiral,0.10,https://advisors.vanguard.com/investments/products/vaipx/vanguard-inflation-protected-securities-fund-admiral-shares
+SCHP,TIPS,Schwab US TIPS ETF,,
+FIPDX,TIPS,Fidelity Inflation-Protected Bond Index,0.05,employer plan fee disclosure (404a-5)
+VTIP,TIPS_SHORT,Vanguard Short-Term Inflation-Protected Securities ETF,0.03,https://advisors.vanguard.com/investments/products/vtip/vanguard-short-term-inflation-protected-securities-etf
+VMFXX,CASH,Vanguard Federal Money Market,0.11,https://www.mutualfunds.com/funds/vmfxx-vanguard-federal-money-market-investor/
+VCTXX,CASH,Vanguard California Municipal Money Market,0.12,https://marketxls.com/mutual-funds/vctxx
+SPAXX,CASH,Fidelity Government Money Market,0.42,https://fundresearch.fidelity.com/mutual-funds/summary/31617H102
+SWVXX,CASH,Schwab Value Advantage Money Fund,,
+BTC,CRYPTO,Bitcoin,0.00,not a fund
+ETH,CRYPTO,Ethereum,0.00,not a fund
+DOGE,CRYPTO,Dogecoin,0.00,not a fund
+SHIB,CRYPTO,Shiba Inu,0.00,not a fund

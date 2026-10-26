@@ -1,0 +1,8 @@
+year,limit,usd,status,source
+2026,401k_employee,24500,official,https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500
+2026,401k_catchup_50,8000,official,https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500
+2026,401k_total_415c,72000,official,https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500
+2026,ira,7500,official,https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500
+2026,ira_catchup_50,1100,official,https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500
+2027,401k_employee,25500,projected,https://www.whitecoatinvestor.com/retirement-plan-contribution-limits/
+2027,ira,7500,projected,https://www.whitecoatinvestor.com/retirement-plan-contribution-limits/

@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+.venv/
+
+# Profiles are personal. Only the fictional example and the holdings template are tracked;
+# your own profile folder stays out of git, even in a public fork.
+profiles/*
+!profiles/example/
+!profiles/_holdings_template.csv
+# Which profile scripts use by default on this machine
+.portfolio-profile
+# All model outputs (regenerate them by running the scripts)
+output/

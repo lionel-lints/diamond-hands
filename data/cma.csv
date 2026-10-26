@@ -1,0 +1,67 @@
+firm,asset_class,return_pct,basis,horizon_years,published,source
+Research Affiliates,us_large,3.1,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Research Affiliates,em,7.5,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Research Affiliates,us_bonds,5.1,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Research Affiliates,intl_dev,7.7,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Invesco,us_large,4.7,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Invesco,em,8.5,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Invesco,us_bonds,4.5,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Invesco,intl_dev,5.9,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+PGIM,us_large,5.2,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+PGIM,em,7.5,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+PGIM,us_bonds,4.7,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+PGIM,intl_dev,6.7,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Morningstar,us_large,5.3,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Morningstar,em,9.9,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Morningstar,us_bonds,4.5,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Morningstar,intl_dev,7.5,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Verus,us_large,5.4,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Verus,em,6.7,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Verus,us_bonds,4.7,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Verus,intl_dev,6.8,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Schwab,us_large,5.9,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Schwab,em,8.1,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Schwab,us_bonds,4.8,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Schwab,intl_dev,7.0,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+AQR,us_large,6.3,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+AQR,em,7.4,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+AQR,us_bonds,4.9,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+AQR,intl_dev,6.9,nominal,10,2026-01,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Meketa,us_large,6.4,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Meketa,em,7.1,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Meketa,us_bonds,4.9,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Meketa,intl_dev,7.2,nominal,10,2025,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Amundi,us_large,6.5,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Amundi,em,7.2,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Amundi,us_bonds,4.6,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+J.P. Morgan,us_large,6.7,nominal,10,2025-10,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+J.P. Morgan,em,7.8,nominal,10,2025-10,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+J.P. Morgan,us_bonds,4.8,nominal,10,2025-10,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+J.P. Morgan,intl_dev,7.5,nominal,10,2025-10,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Northern Trust,us_large,6.8,nominal,10,2025-12,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Northern Trust,em,6.9,nominal,10,2025-12,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Northern Trust,us_bonds,5.0,nominal,10,2025-12,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Callan,us_large,7.3,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Callan,em,8.2,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Callan,us_bonds,4.7,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Callan,intl_dev,7.6,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BNY Mellon,us_large,7.6,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BNY Mellon,em,8.1,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BNY Mellon,us_bonds,4.3,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BNY Mellon,intl_dev,7.8,nominal,10,2026,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BlackRock,us_large,9.0,nominal,10,2026-08,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BlackRock,em,8.8,nominal,10,2026-08,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BlackRock,us_bonds,4.9,nominal,10,2026-08,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+BlackRock,intl_dev,7.8,nominal,10,2026-08,https://www.portfoliolab.app/blog/capital-market-assumptions-consensus
+Research Affiliates,us_small,7.1,nominal,10,2026-01,https://www.morningstar.com/markets/experts-forecast-stock-bond-returns-2026-edition
+Vanguard,us_large,5.2,nominal,10,2026-06,https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/vemo-return-forecasts.html
+Vanguard,intl_dev,6.7,nominal,10,2026-06,https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/vemo-return-forecasts.html
+Vanguard,us_bonds,4.3,nominal,10,2026-06,https://corporate.vanguard.com/content/corporatesite/us/en/corp/vemo/vemo-return-forecasts.html
+GMO,us_large,-5.6,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf
+GMO,us_small,-4.2,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf
+GMO,us_small_value,3.3,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf
+GMO,intl_dev,0.8,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf
+GMO,em,0.7,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf
+GMO,us_bonds,4.5,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf
+GMO,tips,4.9,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf
+GMO,cash,3.7,real+2.5% inflation (7-yr real forecast),7,2026-06-30,https://www.gmo.com/globalassets/articles/gmo-7-year-asset-class-forecast/2026/gmo-7-year-asset-class-forecastjun26.pdf

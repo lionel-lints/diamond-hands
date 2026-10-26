@@ -1,0 +1,14 @@
+scenario,horizon_years,ai_core,ai_adjacent,us_large_other,us_smid,us_small_value,intl_dev,em,bonds,tips,tips_short,cash,private_re,crypto,labs_direct,description
+ai_unwind_mild,1.0,-40,-35,-15,-15,-5,-15,-20,5,3,3.9,3.9,-10,-50,-60,AI leaders de-rate; rest of market dips; rates fall
+ai_unwind_severe,2.5,-65,-60,-30,-30,-15,-30,-35,10,5,10.1,10.1,-20,-70,-80,2000-02 style: concentrated tech leadership deflates over ~2-3 yrs
+lab_boom_bust,1.5,-50,-55,-20,-20,-10,-20,-25,5,3,6.0,6.0,-10,-60,-75,Lab IPOs pop then fall 75%; funding dries up; AI capex cut hits basket (net from today to trough)
+broad_recession,1.5,-50,-55,-45,-50,-50,-50,-55,6,0,6.0,6.0,-35,-70,-80,2008 style: everything risky falls together; only Treasuries hold
+stagflation,2.0,-35,-35,-25,-25,-15,-20,-25,-15,-5,10.0,8.0,-15,-60,-60,1973-74 / 2022 style: inflation + rising rates; stocks and bonds fall together
+ai_keeps_ripping,3.0,80,60,20,20,10,15,20,3,3,12.3,12.3,5,50,100,The regret case: AI delivers and leadership keeps compounding
+ai_unwind_credit_fed_cuts,1.5,-60,-65,-30,-35,-30,-30,-40,5,2,6.0,6.0,-25,-70,-85,"Debt-financed AI buildout unwinds through credit (spreads +2pp); Fed cuts, yields fall ~1pp. Bonds behave as in every historical credit-stress window (+5% avg)"
+ai_unwind_credit_sticky_inflation,1.5,-65,-70,-35,-40,-35,-35,-45,-4,-6,7.0,6.0,-30,-75,-85,"Same unwind but inflation keeps the Fed from cutting: yields don't fall, so the bond fund's corporate share and duration hurt (worst historical credit-stress window -3.5%; TIPS -12% in the acute 2008 phase)"
+lost_decade_2000s,10.0,-50,-45,20,52,110,28,163,92,76,40.0,31.0,20,-50,-90,"Replay of 2000-2009 by sleeve: US stocks flat (-25% real), tech leadership -50%; value, SCV, EM, bonds strong. Private RE judgment (+20%, not REITs' +168%); crypto/labs judgment"
+japan_us_to_trough_local,13.3,-83,-83,-78,-78,-78,50,60,82,60,15.0,15.0,-40,-80,-88,"US stocks follow Japan 1989-12 -> 2003-04 (Nikkei -80%, total ~-78%); AI-like growth worse, small value no better than the market (as in Japan to 2003); deflation: bonds +82%, cash +15%. Rest of world fine (judgment ~3%/yr). Inflation ~0, so real ~= nominal"
+japan_us_to_trough_contagion,13.3,-83,-83,-78,-78,-78,-30,-20,82,60,15.0,15.0,-40,-80,-88,"As japan_us_to_trough_local, but the bust spreads: international -30%, EM -20% over 13 yrs (judgment)"
+japan_us_23y_local,23.0,-81,-81,-70,-70,-50,150,250,120,90,18.0,18.0,-30,-80,-87,"US stocks follow Japan 1989-12 -> 2012-11 (Nikkei -76%, total ~-70%); small value recovers strongly (+68% vs. market, as in Japan); deflation: bonds +120%. Rest of world ~4%/yr (judgment)"
+japan_us_23y_contagion,23.0,-81,-81,-70,-70,-50,20,60,120,90,18.0,18.0,-30,-80,-87,"As japan_us_23y_local, but international barely grows over 23 yrs (+20%; EM +60%) (judgment)"

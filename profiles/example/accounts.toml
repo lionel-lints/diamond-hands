@@ -1,0 +1,46 @@
+# EXAMPLE accounts. Every account name used in holdings/*.csv must appear in [accounts].
+#
+# mode:
+#   movable  fully re-allocatable (tax-advantaged)
+#   frozen   kept as-is; with cash_is_new_money = true its cash is spent as new money
+#   bank     cash; emergency fund first, the rest is new money
+
+[accounts]
+workplace_401k = { mode = "movable" }
+roth_ira = { mode = "movable" }
+brokerage = { mode = "frozen", cash_is_new_money = true }
+savings = { mode = "bank" }
+
+[new_money]
+name = "brokerage_new"
+
+# Funds: a ticker in data/fund_catalog.csv, or a fund_name in plan_menu.csv.
+[funds.workplace_401k]
+us = [["Acme 500 Index Fund", 1.0]]
+intl = [["Acme International Index Fund", 1.0]]
+bonds = [["Acme Bond Index Fund", 1.0]]
+tips = [["Acme Inflation-Protected Index Fund", 1.0]]
+scv = [["Acme Small Value Index Fund", 1.0]]
+
+[funds.roth_ira]
+us = [["VTI", 1.0]]
+intl = [["VXUS", 1.0]]
+scv = [["AVUV", 1.0]]
+bonds = [["BND", 1.0]]
+
+[funds.brokerage_new]
+us = [["VTI", 1.0]]
+intl = [["VXUS", 1.0]]
+reserve = [["SPAXX", 1.0]]
+
+[location]
+fill_order = ["tips_short", "bonds", "tips", "reserve", "scv", "intl", "us"]
+
+[location.order]
+tips_short = []
+bonds = ["workplace_401k", "roth_ira"]
+tips = ["workplace_401k"]
+reserve = ["brokerage_new"]
+scv = ["roth_ira", "workplace_401k"]
+intl = ["brokerage_new", "roth_ira", "workplace_401k"]
+us = ["workplace_401k", "roth_ira", "brokerage_new"]

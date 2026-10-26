@@ -1,0 +1,46 @@
+ticker,name_match,tier,rationale
+NVDA,NVIDIA,core,AI accelerators
+MSFT,MICROSOFT,core,Azure/OpenAI platform
+GOOGL,ALPHABET,core,Gemini/cloud/TPUs (class A)
+GOOG,ALPHABET,core,class C
+AMZN,AMAZON,core,AWS/Trainium
+META,META PLATFORMS,core,AI capex + models
+AVGO,BROADCOM,core,custom AI chips/networking
+AMD,ADVANCED MICRO DEVICES,core,AI accelerators
+ORCL,ORACLE,core,AI cloud buildout
+PLTR,PALANTIR,core,AI software valuation
+MU,MICRON,core,HBM memory
+,TAIWAN SEMICONDUCTOR,core,foundry for nearly all AI chips (intl)
+,SK HYNIX,core,HBM memory (intl)
+ASML,ASML,adjacent_semis,lithography (intl listing in IXUS)
+AMAT,APPLIED MATERIAL,adjacent_semis,chip equipment
+LRCX,LAM RESEARCH,adjacent_semis,chip equipment
+KLAC,KLA,adjacent_semis,chip equipment
+MRVL,MARVELL,adjacent_semis,custom silicon/optics
+ARM,ARM HOLDINGS,adjacent_semis,chip IP
+SNPS,SYNOPSYS,adjacent_semis,chip design software
+CDNS,CADENCE DESIGN,adjacent_semis,chip design software
+INTC,INTEL,adjacent_semis,foundry/AI hopes
+QCOM,QUALCOMM,adjacent_semis,edge AI chips
+,SAMSUNG ELECTRONICS,adjacent_semis,memory (intl)
+,TOKYO ELECTRON,adjacent_semis,chip equipment (intl)
+,ADVANTEST,adjacent_semis,chip testing (intl)
+ANET,ARISTA,adjacent_infra,data-center networking
+SMCI,SUPER MICRO,adjacent_infra,AI servers
+DELL,DELL TECHNOLOGIES,adjacent_infra,AI servers
+VRT,VERTIV,adjacent_infra,data-center power/cooling
+ETN,EATON,adjacent_infra,data-center electrical
+GEV,GE VERNOVA,adjacent_infra,power for data centers
+CEG,CONSTELLATION ENERGY,adjacent_infra,nuclear power PPAs to hyperscalers
+VST,VISTRA,adjacent_infra,power for data centers
+TLN,TALEN,adjacent_infra,power for data centers
+EQIX,EQUINIX,adjacent_infra,data-center REIT
+DLR,DIGITAL REALTY,adjacent_infra,data-center REIT
+CRWV,COREWEAVE,adjacent_infra,AI cloud
+TSLA,TESLA,narrative,valuation leans on autonomy/robots
+CRM,SALESFORCE,narrative,AI software
+NOW,SERVICENOW,narrative,AI software
+,TENCENT,narrative,China AI platform (intl)
+,ALIBABA,narrative,China AI cloud (intl)
+AAPL,APPLE,big_tech_other,mega-cap tech; less AI-driven
+NFLX,NETFLIX,big_tech_other,mega-cap tech; not AI

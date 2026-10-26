@@ -1,0 +1,5 @@
+account,account_type,institution,fund_name,ticker,block,shares,price,value_usd,as_of_date,notes
+workplace_401k,pre-tax,employer plan,Acme 500 Index Fund,,,,,,2026-01-01,a plan fund: name must match plan_menu.csv
+roth_ira,roth,Broker,Vanguard Total Stock Market ETF,VTI,,,,,2026-01-01,a ticker in data/fund_catalog.csv
+brokerage,taxable,Broker,Apple Inc,AAPL,STOCK,,,,2026-01-01,an individual stock
+savings,cash,Bank,High-yield savings,,CASH,,,,2026-01-01,bank cash

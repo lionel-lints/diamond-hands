@@ -1,0 +1,8 @@
+account,account_type,institution,fund_name,ticker,block,shares,price,value_usd,as_of_date,notes
+workplace_401k,pre-tax,Acme,Acme 500 Index Fund,,,,,150000,2026-10-01,fictional
+brokerage,taxable,Broker,Vanguard Total Stock Market ETF,VTI,,,,120000,2026-10-01,fictional
+brokerage,taxable,Broker,Vanguard Total International Stock ETF,VXUS,,,,30000,2026-10-01,fictional
+brokerage,taxable,Broker,Apple Inc,AAPL,STOCK,,,15000,2026-10-01,fictional
+brokerage,taxable,Broker,Fidelity Government Money Market,SPAXX,,,,10000,2026-10-01,fictional
+roth_ira,roth,Broker,Vanguard Total Stock Market ETF,VTI,,,,60000,2026-10-01,fictional
+savings,cash,Bank,High-yield savings,,CASH,,,25000,2026-10-01,fictional

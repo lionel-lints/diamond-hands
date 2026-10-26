@@ -1,0 +1,7 @@
+category,fund_name,share_class,ticker,management,asset_class,model_block,expense_ratio_pct,er_note,notes
+Index,Acme 500 Index Fund,,,index,US large cap,SP500,0.03,,Fictional employer plan fund
+Index,Acme International Index Fund,,,index,developed ex-US,INTL_DEV,0.06,,
+Index,Acme Bond Index Fund,,,index,US bonds,BOND,0.04,,
+Index,Acme Inflation-Protected Index Fund,,,index,TIPS,TIPS,0.05,,
+Index,Acme Small Value Index Fund,,,index,US small value,SCV,0.08,,
+Active,Acme Growth Opportunities Fund,,,active,US large growth,,0.75,,
