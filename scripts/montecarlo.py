@@ -283,11 +283,13 @@ def summarize(sim, bench_sim, start_total, lag_threshold):
 
 
 # --- driver ----------------------------------------------------------------------------
+TODAY = "0 Today (buy & hold)"  # the no-rebalancing baseline; matched by exact name
+
 def candidate_inputs(profile):
     """Per portfolio: starting liquid blocks, the blocks to rebalance, and the reserve."""
     import allocate as A
     state = A.account_state(profile=profile)
-    out = {"0 Today (buy & hold)": (S.today_blocks().drop("PRIVATE_RE", errors="ignore"), set(), 0.0)}
+    out = {TODAY: (S.today_blocks().drop("PRIVATE_RE", errors="ignore"), set(), 0.0)}
     hold = set(profile.satellites) | {"CASH", "PRIVATE_RE"}
     for name, target in profile.candidates.items():
         fills, _ = A.allocate(target, state, profile)
@@ -319,19 +321,19 @@ def run(profile, n_paths=N_PATHS, seed=SEED, runs=None):
             cols = [all_blocks.index(b) for b in blocks.index]
             Rp = Hfull[:, :, cols]
             ref_w = {k: v for k, v in R.REFERENCE.items()}
-            policy_rebal = rebal if "Today" not in name else set()
+            policy_rebal = rebal if name != TODAY else set()
             # Same savings for every portfolio, including today's (the fair counterfactual for
             # "should I rebalance?"). Today has nothing to rebalance, so its new money is added
             # to what it already holds (not cash, not satellites), pro rata.
             streams = profile.contributions()
-            today = "Today" in name
+            today = name == TODAY
             hold_out = set(profile.satellites) | {"CASH"}
             sim = simulate(blocks, Rp, I[idx], policy_rebal, reserve, profile.dip_buying if reserve else (),
                            ref_weights=ref_w, streams=streams,
                            contrib_blocks=(set(blocks.index) - hold_out) if today else None)
             bench = R.benchmark_blocks(blocks)
             bcols = [all_blocks.index(b) for b in bench.index]
-            bench_rebal = (set(bench.index) - set(profile.satellites) - {"CASH"}) if "Today" not in name else set()
+            bench_rebal = (set(bench.index) - set(profile.satellites) - {"CASH"}) if name != TODAY else set()
             bsim = simulate(bench, Hfull[:, :, bcols], I[idx], bench_rebal, reserve,
                             profile.dip_buying if reserve else (), ref_weights=ref_w, streams=streams,
                             contrib_blocks=(set(bench.index) - hold_out) if today else None)

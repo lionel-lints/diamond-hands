@@ -22,8 +22,8 @@ def test_cost_metrics_reports_unknown_er_coverage():
 
 
 def test_lookup_er_prefix_match_is_unique_only():
-    ers = {"State Street Equity 500 Index Fund": 0.02, "Acme Fund A": 0.1, "Acme Fund B": 0.2}
-    assert C.lookup_er("State Street Equity 500 Index", ers) == 0.02
+    ers = {"Acme 500 Index Fund": 0.02, "Acme Fund A": 0.1, "Acme Fund B": 0.2}
+    assert C.lookup_er("Acme 500 Index", ers) == 0.02
     assert np.isnan(C.lookup_er("Acme Fund", ers))   # ambiguous -> unknown, not a guess
 
 

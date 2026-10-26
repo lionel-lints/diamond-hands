@@ -32,12 +32,13 @@ Last full review: 2026-10-22.
 | X2 | Scenario and replay returns are nominal; Monte Carlo and reverse stress also report real (inflation-adjusted) results | all scripts | — | — | judgment | high in stagflation |
 | X3 | No taxes, trading costs, or withdrawals; fees appear only as `compare.py`'s blended expense ratio | all scripts | — | Index ERs are typically 0.02–0.13%, so ignoring fees costs little; taxes matter for taxable accounts (see README, Known limitations) | judgment | low (fees), high (taxes when selling in taxable) |
 | X4 | **(profile)** Emergency fund is a hard floor, never invested | `profile.toml emergency_fund` | per profile | The profile's decision | judgment | low |
+| X5 | Shared fund catalog holds only public funds; plan-specific share classes stay in the profile | `data/fund_catalog.csv` vs. `profiles/<name>/plan_menu.csv` | catalog: public tickers with retail or blank ERs; plan menu: employer-menu names, blocks, ERs | Keeps one person's 401(k) menu out of the shared, published files | judgment | low |
 
 ## Look-through (model A, `lookthrough.py`)
 
 | ID | Assumption | Where | Value | Evidence | Status | Sensitivity |
 |---|---|---|---|---|---|---|
-| A1 | iShares proxy ETFs stand in for the funds a profile holds | `lookthrough.PROXIES` | VTI/VTSAX/FZROX→ITOT; State Street 500→IVV; VXUS/VFWAX→IXUS; Vanguard small cap→50% ISCV + 50% ISCG | Vanguard blocks scripted holdings downloads. Proxies track the same or near-identical indexes. VFWAX excludes small caps that IXUS includes | sourced | low (~±1pp on AI %) |
+| A1 | iShares proxy ETFs stand in for the funds a profile holds | `lookthrough.PROXIES` | VTI/VTSAX/FZROX→ITOT; S&P 500 fund→IVV; VXUS/VFWAX→IXUS; Vanguard small cap→50% ISCV + 50% ISCG | Vanguard blocks scripted holdings downloads. Proxies track the same or near-identical indexes. VFWAX excludes small caps that IXUS includes | sourced | low (~±1pp on AI %) |
 | A2 | Holdings snapshot is current | `data/fund_holdings/*_2026-10-20.csv` | as of 2026-10-19 | iShares files | verified | low until markets move a lot; re-fetch before decisions |
 | A3 | US size buckets by cap rank: top 70% of cap is large, next 20% mid, rest small | `lookthrough.size_buckets` | 70/90 cut | Morningstar-style definition, applied to ITOT weights | judgment | low |
 | A4 | The AI basket defines "AI exposure" | `data/ai_basket.csv` (shared default; a profile may override with its own `ai_basket.csv`) | 45 names in 5 tiers | A judgment call (edit it, or override per profile); e.g. Tesla is "narrative", Micron and SK Hynix are "core" | judgment | high: it *is* the metric |

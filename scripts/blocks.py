@@ -40,7 +40,7 @@ REPLAY_SERIES = {
     "PRIVATE_RE": ["VGSIX"], "CRYPTO": ["ETH-USD"],
     # Cash and stable value earn T-bills (was 0%; assumption S5).
     "CASH": ["SYN_TBILL"], "STABLE": ["SYN_TBILL"],
-    # Bonds live in the 401(k), whose option is the intermediate-term index (VBILX ~ VBIIX).
+    # A 401(k) may offer an intermediate-term bond index instead of total bond (VBILX ~ VBIIX).
     "BOND": ["VBIIX", "VBMFX", "SYN_TSY"],
     "MID": ["VIMSX", "NAESX", "FF_us_mkt"], "INTL_DEV": ["VTMGX", "VGTSX", "FF_dev_mkt", "FF_us_mkt"],
     # No emerging-markets series before 1994; earlier windows use developed ex-US, then US (judgment).

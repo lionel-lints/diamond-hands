@@ -51,8 +51,8 @@ bank = { mode = "bank" }
 name = "taxable_new"
 
 [funds."401k"]
-us = [["SSSYX", 1.0]]
-intl = [["BTMKX", 0.75], ["VEMAX", 0.25]]
+us = [["VFIAX", 1.0]]
+intl = [["VTMGX", 0.75], ["VEMAX", 0.25]]
 scv = [["VSIAX", 1.0]]
 bonds = [["VBILX", 1.0]]
 tips = [["FIPDX", 1.0]]

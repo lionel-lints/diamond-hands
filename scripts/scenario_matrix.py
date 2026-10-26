@@ -36,8 +36,9 @@ REPLAY_FULL_WINDOW = {"AI run 2023-now", "Stagflation 1973-81"}
 
 
 def variations(profile):
-    """The IPS target's structure at other stock shares (intl/SCV variations are profile candidates)."""
-    base = profile.candidates[profile.ips_target]
+    """The IPS target's structure (or the first candidate's, if no target is chosen yet) at other
+    stock shares (intl/SCV variations are profile candidates)."""
+    base = profile.candidates.get(profile.ips_target) or next(iter(profile.candidates.values()))
     s0 = 1 - sum(base.get(k, 0) for k in ("bonds", "tips", "tips_short"))
     intl, scv = base.get("intl", 0) / s0, base.get("scv", 0) / s0
     tips_share = base.get("tips", 0) / (1 - s0) if s0 < 1 else 0.5

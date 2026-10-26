@@ -13,3 +13,13 @@ profiles/*
 .portfolio-profile
 # All model outputs (regenerate them by running the scripts)
 output/
+
+# Personal Claude Code settings
+.claude/settings.local.json
+# Broker exports and statements dropped anywhere outside a profile folder
+*.pdf
+*.xlsx
+*.xls
+*.numbers
+*.ofx
+*.qfx

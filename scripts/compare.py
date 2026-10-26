@@ -101,7 +101,7 @@ def holdings_by_fund(name, target, state, profile, pos):
 
 def lookup_er(name, ers):
     """ER by exact key, else by a plan-menu name the holding's name is a prefix of
-    (exports often drop a trailing "Fund": "State Street Equity 500 Index")."""
+    (exports often drop a trailing "Fund": "Acme 500 Index")."""
     if name in ers:
         return ers[name]
     hits = [v for k, v in ers.items() if isinstance(name, str) and len(name) > 8 and k.startswith(name)]
@@ -142,7 +142,7 @@ def build(profile, n_paths=1000):
     real_fail = next((k for k in fails if k.endswith("real")), None)
     rows = {}
     for name, blocks in ports.items():
-        mcname = "0 Today (buy & hold)" if name == "0 Today" else name
+        mcname = M.TODAY if name == "0 Today" else name
         sl = S.to_sleeves(blocks, prof)
         stocks = sl.reindex(R.STOCK_SLEEVES).fillna(0).sum()
         liquid = blocks.drop("PRIVATE_RE", errors="ignore").sum()

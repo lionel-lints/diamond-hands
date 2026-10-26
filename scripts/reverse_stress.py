@@ -6,18 +6,19 @@ have to name the future -- only say what failure means. The point is to find eac
 allocation's breaking points, not to predict anything.
 
 Each world is a 12-month move. Sleeve shock = sum(loading x factor) + noise + carry, clipped
-to BOUNDS. Four factors (equity, ai, rates, credit) are drawn from uniform ranges
-(FACTOR_RANGE, deliberately wider than history). By default they're correlated as in
+to BOUNDS. Five factors (equity, ai, rates, credit, inflation) are drawn from uniform ranges
+(FACTOR_RANGE; the first four deliberately wider than history, inflation kept to its
+1997-2026 range). By default they're correlated as in
 1997-2026 via a Gaussian copula (--factors historical), and sleeves with usable history use
 fitted loadings (--loadings fitted, from calibrate.py). --factors independent /
 --loadings assumed are the original hand-set design, kept for sensitivity runs. Uniform
 marginals mean extreme worlds are NOT rare here, even with historical correlation: breach
 shares rank allocations, they are not probabilities.
 
-Under fitted loadings the bond fund (VBIIX, the 401(k)'s option) FALLS in credit stress
-(credit +0.40); under assumed loadings it rises (-0.2). That disagreement is assumption R11.
-Cash and short TIPS earn the T-bill rate and bonds/TIPS the 10-yr yield as carry. Nothing
-is inflation-adjusted yet.
+Under fitted loadings the intermediate bond fund (VBIIX) FALLS in credit stress (credit
++0.40); under assumed loadings it rises (-0.2). That disagreement is assumption R11.
+Cash and short TIPS earn the T-bill rate and bonds/TIPS the 10-yr yield as carry. TIPS also
+earn the inflation surprise, and every world's inflation deflates the real-terms failure.
 
 Outputs, per portfolio x failure condition: how often it breaks, the *mildest* world
 that breaks it, and what the breaking worlds have in common (mean AI-basket shock, how

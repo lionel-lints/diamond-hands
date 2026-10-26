@@ -1,6 +1,6 @@
 """Download published holdings for proxy ETFs into data/fund_holdings/.
 
-Vanguard blocks scripted downloads, so each fund we own is mapped to an iShares ETF
+Vanguard blocks scripted downloads, so each model block is mapped to an iShares ETF
 tracking the same or a near-identical index (see PROXIES in lookthrough.py).
 Run: uv run --with requests python scripts/fetch_fund_holdings.py
 """

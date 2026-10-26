@@ -43,8 +43,9 @@ def test_profile_toml_errors(tmp_path, old, new, match):
 @pytest.mark.parametrize("old,new,match", [
     ('roth_ira = { mode = "movable" }', 'roth_ira = { mode = "sometimes" }', "needs mode"),
     ('bonds = ["401k", "roth_ira"]', 'bonds = ["401k", "taxable_new"]', r"sends 'bonds' to 'taxable_new'"),
-    ('intl = [["BTMKX", 0.75], ["VEMAX", 0.25]]', 'intl = [["BTMKX", 0.75], ["VEMAX", 0.2]]', "shares must sum to 1"),
+    ('intl = [["VTMGX", 0.75], ["VEMAX", 0.25]]', 'intl = [["VTMGX", 0.75], ["VEMAX", 0.2]]', "shares must sum to 1"),
     ('fill_order = ["tips_short", ', 'fill_order = [', r"fill_order is missing \['tips_short'\]"),
+    ('[funds.taxable_new]\nus = [["VTI", 1.0]]\n', '[funds.taxable_new]\n', r"\[funds.taxable_new\] needs a `us` fund"),
 ])
 def test_accounts_toml_errors(tmp_path, old, new, match):
     assert old in ACCOUNTS_TOML

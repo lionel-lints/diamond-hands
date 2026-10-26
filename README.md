@@ -234,7 +234,7 @@ loss and finds the scenarios.
 5. `--factors independent --loadings assumed` is the original design, kept for sensitivity.
 
 **Bonds depend on that choice** (assumption R11):
-- **Fitted** on the 401(k)'s intermediate bond fund, bonds **fall** in credit stress
+- **Fitted** on an intermediate-term bond fund (VBIIX), bonds **fall** in credit stress
   (credit +0.40).
 - **Assumed**, they rise (−0.2).
 - History supports both readings in parts: Treasuries rally in panics, while intermediate

@@ -222,6 +222,10 @@ def validate(p):
             raise ProfileError(f"{where}: account {a!r} merges into unknown account {cfg['merge_into']!r}")
     funds = p.account_funds()
     allocatable = set(p.allocatable_accounts())
+    for a in p.allocatable_accounts():
+        if "us" not in funds.get(a, {}):
+            raise ProfileError(f"{where}: [funds.{a}] needs a `us` fund: any money left in an account after "
+                               f"the targets are filled is invested in US stocks there")
     for a, classes in funds.items():
         if a not in allocatable:
             raise ProfileError(f"{where}: [funds.{a}] is not a movable account or the new-money account")
