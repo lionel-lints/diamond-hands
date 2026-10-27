@@ -27,6 +27,14 @@ def test_recenter_hits_target_geometric_mean_and_keeps_shape():
     pd.testing.assert_series_equal(out.B, h.B)
 
 
+def test_cma_horizon_months_matches_the_forecasts_own_horizon():
+    """The recentered segment must end where the forecast ends (median/p25 10 yrs, GMO 7);
+    months beyond come from raw history (assumption M6)."""
+    assert M.cma_horizon_months("median") == 120
+    assert M.cma_horizon_months("p25") == 120
+    assert M.cma_horizon_months("GMO") == 84
+
+
 def test_cma_targets_small_premium_is_one_point_in_every_run(monkeypatch):
     # cma.wide() is in percent; SMALL_PREMIUM is a decimal (0.01 = 1pp). The median/p25 runs
     # once added it before converting, which made the premium 0.01pp.

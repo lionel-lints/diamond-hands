@@ -16,6 +16,12 @@ def test_grid_targets_are_valid_and_unique():
         assert t["intl"] == pytest.approx(meta["stocks"] * meta["intl_of_stocks"])
 
 
+def test_grid_carries_the_profiles_reserve_policy():
+    """Grid mixes and profile candidates must run under the same reserve treatment."""
+    assert all(t["reserve_usd"] == 0 for _, _, t in RF.grid())
+    assert all(t["reserve_usd"] == "new_taxable" for _, _, t in RF.grid("new_taxable"))
+
+
 def test_shortfall_is_zero_on_frontier_and_measures_double_dominance():
     m10 = np.array([2.0, 2.2, 1.9, 2.1])
     p3 = np.array([0.90, 0.85, 0.88, 0.89])

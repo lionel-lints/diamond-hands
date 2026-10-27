@@ -38,6 +38,8 @@ def test_top10_share():
                                           ("cost: blended expense ratio (%)", 0.0442, "0.044%"),
                                           ("reverse: liquid -40% breach share", 0.094, "9.4%"),
                                           ("scenario: ai_unwind_severe", -0.277, "-28%"),
+                                          ("AI cap: core AI within profile cap", True, "ok"),
+                                          ("AI cap: core AI within profile cap", False, "OVER"),
                                           ("regret: SCV alone", float("nan"), "—")])
 def test_fmt_cell(metric, v, out):
     assert C.fmt_cell(metric, v) == out

@@ -23,6 +23,14 @@ def test_sample_worlds_cash_is_flat():
     assert (w["cash"] == 0).all()
 
 
+def test_ai_factor_range_covers_historical_meltups():
+    """The 'lags market' failure is an up-market failure: if the ai factor's upside stops
+    short of the historical max (1999-2000, +1.10), melt-up lag worlds are never generated."""
+    hist = pd.read_csv(R.ROOT / "data/factor_hist_range.csv", index_col=0)
+    assert R.FACTOR_RANGE["ai"][1] >= hist.at["ai", "max"]
+    assert R.FACTOR_RANGE["ai"][0] <= hist.at["ai", "min"]
+
+
 def test_portfolio_results_hand_checked(fake_root):
     # Fake TOTAL_US = 50% ai_core / 25% us_large_other / 25% us_smid, with 0.1% carved out to labs_direct.
     blocks = pd.Series({"TOTAL_US": 1000.0, "PRIVATE_RE": 1000.0})

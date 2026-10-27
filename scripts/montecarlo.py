@@ -19,7 +19,11 @@ capital-market-assumption set (data/cma.csv) while its volatility and correlatio
 historical. Runs: history as-is, the 16-firm median, the pessimistic 25th percentile, and
 the two bookends (GMO, BlackRock). A forecast applies only over its own horizon (10 years;
 GMO 7); later months use the un-recentered 1990-2026 history. Extending a 7-10 year
-mean-reversion call over 30 years would turn it into a permanent trend.
+mean-reversion call over 30 years would turn it into a permanent trend. The flip side: raw
+1990-2026 history compounds US stocks at ~10.8%/yr and SCV at ~11.9%, well above the
+16-firm median forecast (6.1%/7.1%), while international is the reverse (~5.7% hist vs
+7.1% forecast). Read the 20- and 30-year columns as mostly-history, whichever run is named
+(assumption M6); the run headers below say exactly where each forecast stops.
 
 Run: uv run --with pandas --with numpy python scripts/montecarlo.py [--profile NAME] [--paths N]
 """
@@ -47,6 +51,8 @@ LAG_WINDOW_MONTHS = 60    # "lags the benchmark by >= X over any 5-year window".
 LAG_SEARCH_YEARS = 10     # ...within the first 10 years (over 30 years, ~300 overlapping windows
                           # make almost any tilt trip it eventually)
 WINDOWS = {"hist 1990-2026": ("1990-08", "2026-09"), "hist 1954-2026": ("1954-01", "2026-09")}
+RUNS = [("hist 1990-2026", None), ("hist 1954-2026", None), ("CMA median", "median"),
+        ("CMA 25th pct", "p25"), ("CMA GMO", "GMO"), ("CMA BlackRock", "BlackRock")]
 REFERENCE_BLOCKS = list(R.REFERENCE)  # always simulated, for the dip trigger and lag benchmark
 
 # CMA asset class used to re-center each block; direct stocks use us_large.
@@ -303,8 +309,7 @@ def run(profile, n_paths=N_PATHS, seed=SEED, runs=None):
     inputs = candidate_inputs(profile)
     all_blocks = sorted({b for blocks, _, _ in inputs.values() for b in blocks.index} | set(REFERENCE_BLOCKS))
     tbill = R.current_carry()["cash"]
-    runs = runs or [("hist 1990-2026", None), ("hist 1954-2026", None), ("CMA median", "median"),
-                    ("CMA 25th pct", "p25"), ("CMA GMO", "GMO"), ("CMA BlackRock", "BlackRock")]
+    runs = runs or RUNS
     n_months = max(HORIZONS_YEARS) * 12
     rows = []
     for run_name, cma_set in runs:
@@ -375,6 +380,12 @@ def main(argv=None):
     for run_name, d in df.groupby("run", sort=False):
         print(f"== {run_name} ==  (real p = wealth incl. contributions as a multiple of today's liquid; "
               "DD / underwater / lag = investment returns excluding new money)")
+        which = dict(RUNS).get(run_name)
+        if which:  # a CMA run: say exactly where the forecast stops and raw history resumes
+            yrs = cma_horizon_months(which) // 12
+            a, b = WINDOWS["hist 1990-2026"]
+            print(f"   (recentered to the forecast for the first {yrs} yrs; months beyond use raw "
+                  f"{a}–{b} history — assumption M6)")
         t = d.set_index("portfolio")[list(show)].rename(columns=show)
         fmt = {c: ("{:.2f}x" if "real p" in c else "{:.0f}" if "mo)" in c else "{:.0%}") for c in t.columns}
         print(t.apply(lambda col: col.map(fmt[col.name].format)).to_string(), "\n")

@@ -42,23 +42,27 @@ person's inputs are a **profile** in `profiles/<name>/` (gitignored, except `exa
 ## Commands
 
 ```sh
-uv run --with pandas --with pytest --with numpy --with requests python -m pytest   # all tests, ~10s
-uv run --with pandas --with pytest --with numpy --with requests python -m pytest -m network  # live downloads
-uv run --with pandas python scripts/lookthrough.py [--profile NAME]
-uv run --with pandas python scripts/allocate.py
-uv run --with pandas python scripts/stress.py
-uv run --with pandas --with numpy python scripts/reverse_stress.py
-uv run --with pandas --with numpy python scripts/montecarlo.py
-uv run --with pandas --with numpy python scripts/compare.py         # one table, every model
-uv run --with yfinance --with pandas python scripts/fetch_prices.py  # refresh prices (+ profile's stocks)
-uv run --with pandas --with requests python scripts/fetch_fund_holdings.py
+uv run python -m pytest                    # all tests, ~10s
+uv run python -m pytest -m network         # live downloads
+uv run python scripts/lookthrough.py [--profile NAME]
+uv run python scripts/allocate.py
+uv run python scripts/stress.py
+uv run python scripts/reverse_stress.py
+uv run python scripts/montecarlo.py
+uv run python scripts/compare.py           # one table, every model
+uv run python scripts/fetch_prices.py      # refresh prices (+ profile's stocks)
+uv run python scripts/fetch_fund_holdings.py
 ```
 
 Validate a profile without running a model:
 
 ```sh
-uv run --with pandas python -c "import sys; sys.path.insert(0, 'scripts'); import user_profile as P; print(P.load('NAME').summary())"
+uv run python -c "import sys; sys.path.insert(0, 'scripts'); import user_profile as P; print(P.load('NAME').summary())"
 ```
+
+Dependencies are pinned (`pyproject.toml` + `uv.lock`); `uv run` uses the locked environment.
+Bump them deliberately (`uv lock --upgrade`) and run the suite — a pandas/numpy behavior
+change is a code review, not a surprise. CI runs the (non-network) tests on every push.
 
 ## Code conventions
 

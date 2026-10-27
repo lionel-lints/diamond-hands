@@ -153,6 +153,8 @@ def build(profile, n_paths=1000):
             "top-10 companies % of stocks": top10_share(blocks.drop(["CASH", "PRIVATE_RE", "CRYPTO", "BOND", "TIPS",
                                                                      "TIPS_SHORT", "STABLE"], errors="ignore"), iprof),
         }
+        if profile.ai_cap is not None:  # the profile's IPS cap, checked, not just displayed
+            r["AI cap: core AI within profile cap"] = bool(r["core AI % of stocks"] <= profile.ai_cap)
         for s in SCENARIOS:
             r[f"scenario: {s}"] = hyp[(name, s)]
         r["scenario: lost_decade_2000s (real)"] = (1 + hyp[(name, "lost_decade_2000s")]) / LOST_DECADE_CPI - 1
@@ -179,6 +181,8 @@ def build(profile, n_paths=1000):
 def fmt_cell(metric, v):
     if pd.isna(v):
         return "—"
+    if "within profile cap" in metric:
+        return "ok" if v else "OVER"
     if "wealth" in metric:
         return f"{v:.2f}x"
     if "expense ratio" in metric:
@@ -210,6 +214,10 @@ def main(argv=None):
     pd.set_option("display.width", 250)
     print(shown.rename(columns=short).to_string())
     print(f"\nIPS target: {profile.ips_target}. Signs: scenario/replay/regret are % changes (negative = loss or lag).")
+    if profile.ai_cap is not None:
+        over = [c for c in t.columns if not t.loc["AI cap: core AI within profile cap", c]]
+        print(f"AI cap (core AI ≤ {profile.ai_cap:.0%} of stocks): "
+              + (f"OVER the cap: {', '.join(over)}" if over else "every portfolio is within the cap."))
 
 
 if __name__ == "__main__":

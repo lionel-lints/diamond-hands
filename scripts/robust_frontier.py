@@ -5,7 +5,9 @@ A grid of allocations (stock share x intl share of stocks x SCV share of stocks 
 split) is turned into real funds per account by allocate.py (taxable frozen, asset location),
 then simulated by montecarlo.py under each history window and forecast set, with the
 profile's contributions and dip rule. All mixes share the same random paths (common random
-numbers), so differences come from the mix, not from luck.
+numbers), so differences come from the mix, not from luck. Every mix carries the profile's
+reserve policy (the IPS target's reserve_usd), so grid rows and the profile's candidates are
+evaluated under the same cash/dip-buying treatment.
 
 Two objectives, matching the 3-year risk window and longer growth:
   p3   5th-percentile real wealth at 3 years (higher = safer)
@@ -43,13 +45,15 @@ RUNS = [("hist 1990-2026", None), ("hist 1954-2026", None), ("CMA median", "medi
         ("CMA 25th pct", "p25"), ("CMA GMO", "GMO"), ("CMA BlackRock", "BlackRock")]
 
 
-def grid():
+def grid(reserve_usd=0):
+    """The allocation grid. reserve_usd: the cash reserve every mix holds (the profile's
+    reserve policy by default, so candidates and grid mixes are comparable)."""
     for s, i, v, t in itertools.product(STOCK_SHARES, INTL_OF_STOCKS, SCV_OF_STOCKS, TIPS_OF_FIXED):
         fixed = 1 - s
         if fixed == 0 and t > 0:
             continue  # TIPS split is meaningless with no fixed income
         target = {"us": s * (1 - i - v), "intl": s * i, "scv": s * v,
-                  "bonds": fixed * (1 - t), "tips": fixed * t, "reserve_usd": "new_taxable"}
+                  "bonds": fixed * (1 - t), "tips": fixed * t, "reserve_usd": reserve_usd}
         name = f"{s:.0%} stk | {i:.0%} intl | {v:.0%} SCV | {t:.0%} TIPS"
         yield name, {"stocks": s, "intl_of_stocks": i, "scv_of_stocks": v, "tips_of_fixed": t}, target
 
@@ -131,9 +135,11 @@ def main(argv=None):
     P.use(args.profile) if args.profile else P.current()
     profile = P.current()
     print(profile.summary())
-    mixes = list(grid())
+    base = profile.candidates.get(profile.ips_target) or next(iter(profile.candidates.values()), {})
+    reserve_usd = base.get("reserve_usd", 0)
+    mixes = list(grid(reserve_usd))
     print(f"{len(mixes)} mixes x {len(RUNS)} runs x {args.paths:,} paths (common random numbers), 10-yr horizon, "
-          f"contributions ${profile.monthly_contribution:,.0f}/mo\n")
+          f"contributions ${profile.monthly_contribution:,.0f}/mo, reserve_usd={reserve_usd!r}\n")
     df = evaluate(profile, mixes, args.paths)
     out = profile.output_dir
     out.mkdir(parents=True, exist_ok=True)

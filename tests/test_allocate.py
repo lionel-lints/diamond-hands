@@ -18,6 +18,17 @@ def test_account_state_capacities(state):
     assert state["fixed_blocks"].to_dict() == {"CRYPTO": 50, "INTL": 500, "META": 200, "PRIVATE_RE": 1000, "TOTAL_US": 1000}
 
 
+def test_underfunded_emergency_fund_warns(fake_root, capsys):
+    """Bank cash below the emergency fund must warn, not silently shrink the fund."""
+    import user_profile as P
+    prof = fake_root / "profiles/test"
+    p = (prof / "profile.toml")
+    p.write_text(p.read_text().replace("emergency_fund = 100", "emergency_fund = 5000"))
+    state = A.account_state(profile=P.load(prof))
+    assert state["emergency_fund"] == 300  # all there is; the gap is reported, not hidden
+    assert "below the $5,000 emergency fund" in capsys.readouterr().out
+
+
 def test_feasible_target_is_hit_and_located(state):
     # want: bonds 330, scv 110, intl 550 (500 frozen), us 1210 (1000 frozen)
     fills, summary = A.allocate({"us": .55, "intl": .25, "scv": .05, "bonds": .15}, state)

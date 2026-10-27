@@ -7,8 +7,8 @@ allocation's breaking points, not to predict anything.
 
 Each world is a 12-month move. Sleeve shock = sum(loading x factor) + noise + carry, clipped
 to BOUNDS. Five factors (equity, ai, rates, credit, inflation) are drawn from uniform ranges
-(FACTOR_RANGE; the first four deliberately wider than history, inflation kept to its
-1997-2026 range). By default they're correlated as in
+(FACTOR_RANGE; stress sides deliberately wider than history, the ai upside at its 1999-2000
+historical max, inflation kept to its 1997-2026 range). By default they're correlated as in
 1997-2026 via a Gaussian copula (--factors historical), and sleeves with usable history use
 fitted loadings (--loadings fitted, from calibrate.py). --factors independent /
 --loadings assumed are the original hand-set design, kept for sensitivity runs. Uniform
@@ -73,7 +73,11 @@ def failures(profile=None):
 # sleeve shock = sum(loading * factor) + idiosyncratic noise + carry, clipped to BOUNDS.
 FACTOR_RANGE = {
     "equity": (-0.60, 0.50),   # global risk appetite: crashes to melt-ups
-    "ai": (-0.70, 0.60),       # AI-specific repricing on top of equities
+    "ai": (-0.70, 1.10),       # AI-specific repricing on top of equities. The downside goes well
+                               # past the -0.47 historical min; the upside reaches the 1999-2000
+                               # historical max (+1.10, data/factor_hist_range.csv) so 1999-style
+                               # melt-ups are in range -- without them the "lags market" failure
+                               # (an up-market failure) is never really tested.
     "rates": (-0.20, 0.25),    # positive = inflation/tightening; negative = flight to quality
     "credit": (-0.25, 0.05),   # negative = credit/liquidity stress (AI buildout is debt-financed)
     "inflation": (-0.02, 0.09),  # realized CPI over the 12-month world = the 1997-2026 range. Unlike

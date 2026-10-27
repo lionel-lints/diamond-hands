@@ -28,9 +28,9 @@ explains the output. Run `/setup-profile` in Claude Code to start.
 
 ```sh
 git clone https://github.com/lionel-lints/diamond-hands.git && cd diamond-hands
-# needs uv (https://docs.astral.sh/uv/); Python dependencies are pulled per command
-uv run --with pandas --with pytest --with numpy --with requests python -m pytest   # ~10s
-uv run --with pandas python scripts/lookthrough.py          # runs on the fictional example profile
+# needs uv (https://docs.astral.sh/uv/); Python dependencies are pinned in uv.lock
+uv run python -m pytest                     # ~10s
+uv run python scripts/lookthrough.py        # runs on the fictional example profile
 ```
 
 Then, in Claude Code, run `/setup-profile`. Or set a profile up by hand (see [Profiles](#profiles)).
@@ -180,19 +180,19 @@ sleeve dollars.
 Per profile (add `--profile <name>` to override the default):
 
 ```sh
-uv run --with pandas python scripts/lookthrough.py
-uv run --with pandas python scripts/allocate.py
-uv run --with pandas python scripts/stress.py
-uv run --with pandas --with numpy python scripts/reverse_stress.py   # --factors/--loadings/--no-carry for sensitivity
-uv run --with pandas --with numpy python scripts/montecarlo.py       # --paths N
+uv run python scripts/lookthrough.py
+uv run python scripts/allocate.py
+uv run python scripts/stress.py
+uv run python scripts/reverse_stress.py   # --factors/--loadings/--no-carry for sensitivity
+uv run python scripts/montecarlo.py       # --paths N
 ```
 
 Shared (same for everyone):
 
 ```sh
-uv run --with pandas --with numpy python scripts/frontier.py
-uv run --with pandas --with numpy python scripts/calibrate.py        # refreshes data/loadings_fitted.csv, data/factor_corr.csv
-uv run --with pandas --with pytest --with numpy --with requests python -m pytest   # tests
+uv run python scripts/frontier.py
+uv run python scripts/calibrate.py        # refreshes data/loadings_fitted.csv, data/factor_corr.csv
+uv run python -m pytest                   # tests
 ```
 
 Refresh data before big decisions:
@@ -216,9 +216,10 @@ loss and finds the scenarios.
 
 **How worlds are built.** It generates 100K random **12-month** "worlds":
 1. It rolls 5 factors per world (*equity*, *ai*, *rates*, *credit*, *inflation*), each
-   uniform over a range. The first four are deliberately wider than history
-   (`FACTOR_RANGE`). Inflation is kept to its 1997–2026 range: a wide uniform range made
-   5% the typical world (assumption R13).
+   uniform over a range. Stress sides are deliberately wider than history, and the *ai*
+   upside reaches the 1999–2000 historical maximum (+110%) so melt-up lag failures are in
+   range (`FACTOR_RANGE`). Inflation is kept to its 1997–2026 range: a wide uniform range
+   made 5% the typical world (assumption R13).
 2. **By default the factors are correlated as in 1997–2026** (Gaussian copula,
    `--factors historical`): equity–credit 0.71, rates–credit 0.50. Without that,
    implausible combinations dominate, such as a credit crunch while stocks rally.

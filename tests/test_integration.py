@@ -114,6 +114,17 @@ def test_reverse_stress_main_outputs_are_sane(real_root_sandbox, monkeypatch):
         assert p["Aggressive 90/10"] >= p["Defensive 75/25"], f
 
 
+def test_compare_checks_the_profile_ai_cap(real_root_sandbox, monkeypatch):
+    """The profile's AI cap is enforced as a pass/fail row, not just displayed."""
+    import compare as C
+    monkeypatch.setattr(C.R, "N_WORLDS", 2000)  # fast; build() reads the global at call time
+    t = C.build(P.current(), n_paths=50)
+    row = t.loc["AI cap: core AI within profile cap"]
+    assert not row["0 Today"]          # ~27% core AI vs the example's 25% cap
+    assert row["SCV 80/20"]            # the IPS target stays under the cap
+    assert row.dropna().map(type).eq(bool).all()
+
+
 def test_frontier_front_is_non_dominated():
     prices = pd.read_csv(REAL_ROOT / "data/prices/monthly_adjclose.csv", index_col=0, parse_dates=True)
     rets, cov, mu = F.load_inputs(prices)

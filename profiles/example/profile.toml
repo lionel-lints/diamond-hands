@@ -28,12 +28,13 @@ real_networth_drawdown = 0.30  # net worth falls 30% after inflation (optional)
 
 # Candidate allocations: shares of the investable pool by asset class (must sum to 1).
 # Classes: us, intl, scv, bonds, tips, tips_short. reserve_usd: dip-buying cash held back
-# first, in dollars or "new_taxable".
+# first, in dollars or "new_taxable" (all new-money capacity; pairs with [dip_buying]).
 [candidates."Three-fund 80/20"]
 us = 0.56
 intl = 0.24
 bonds = 0.10
 tips = 0.10
+reserve_usd = "new_taxable"
 
 [candidates."SCV 80/20"]
 us = 0.44
@@ -41,6 +42,7 @@ intl = 0.24
 scv = 0.12
 bonds = 0.10
 tips = 0.10
+reserve_usd = "new_taxable"
 
 [candidates."Defensive 75/25"]
 us = 0.3375
@@ -48,6 +50,7 @@ intl = 0.2625
 scv = 0.15
 bonds = 0.125
 tips = 0.125
+reserve_usd = "new_taxable"
 
 [candidates."Aggressive 90/10"]
 us = 0.54
@@ -55,6 +58,7 @@ intl = 0.27
 scv = 0.09
 bonds = 0.05
 tips = 0.05
+reserve_usd = "new_taxable"
 
 # Optional (indicators.py): market-concentration readings when the plan was made, and the
 # level at which each would argue for shrinking the hedges. Values are illustrative.

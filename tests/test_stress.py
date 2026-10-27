@@ -145,6 +145,15 @@ def test_replay_reports_real_returns_and_series_used(long_history, monkeypatch):
     assert "INTL=FF_us_mkt" in r.series_used and "CASH=SYN_TBILL" in r.series_used
 
 
+def test_stocks_on_fallback_flags_missing_and_stale_series(fake_root):
+    d = fake_root / "data/prices"
+    d.mkdir(exist_ok=True)
+    pd.DataFrame({"TOTAL_US": [100, 100, 100], "STALE": [100, None, None]},
+                 index=["2020-02", "2020-03", "2020-04"]).to_csv(d / "replay_monthly.csv")
+    blocks = {"META": 1.0, "STALE": 1.0, "TOTAL_US": 1.0}  # META: no column; STALE: ends early
+    assert sorted(S.stocks_on_fallback(blocks)) == ["META", "STALE"]
+
+
 def test_every_block_has_a_pre_1990_fallback():
     """No block should silently go flat in the 1970s episodes (it once did for international)."""
     long = {"FF_us_mkt", "FF_small_blend", "FF_us_small_value", "FF_us_big_growth", "SYN_TSY", "SYN_TBILL"}

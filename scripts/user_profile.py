@@ -186,6 +186,16 @@ def validate(p):
         bad = set(target) - set(CLASSES) - {"reserve_usd"}
         if bad:
             raise ProfileError(f"{where}: candidate {name!r} has unknown classes {sorted(bad)}; use {CLASSES}")
+        for k, v in target.items():
+            if k == "reserve_usd":
+                if isinstance(v, str) and v != "new_taxable":
+                    raise ProfileError(f'{where}: candidate {name!r}: reserve_usd must be a dollar amount '
+                                       f'or "new_taxable", not {v!r}')
+                if not isinstance(v, str) and v < 0:
+                    raise ProfileError(f"{where}: candidate {name!r}: reserve_usd is negative")
+            elif v < 0:
+                raise ProfileError(f"{where}: candidate {name!r} has a negative share ({k} = {v}); "
+                                   "shorts aren't modeled")
         shares = sum(v for k, v in target.items() if k != "reserve_usd")
         if abs(shares - 1) > 1e-9:
             raise ProfileError(f"{where}: candidate {name!r} shares sum to {shares:.4f}, not 1")

@@ -168,6 +168,20 @@ def replay(portfolios):
     return pd.DataFrame(rows)
 
 
+def stocks_on_fallback(blocks):
+    """Direct stocks in `blocks` whose own series is missing or stale in replay_monthly.csv;
+    those replay through DIRECT_STOCK_FALLBACK (assumption S4), not their own history."""
+    px = pd.read_csv(ROOT / "data/prices/replay_monthly.csv", index_col=0)
+    last = px.index[-1]
+    out = []
+    for b in blocks:
+        if not B.is_direct_stock(b):
+            continue
+        if b not in px.columns or px[b].dropna().empty or px[b].dropna().index[-1] < last:
+            out.append(b)
+    return out
+
+
 def main(argv=None):
     import allocate  # local import: allocate imports this module
 
@@ -210,6 +224,11 @@ def main(argv=None):
     for _, r in rep[rep.portfolio == ips].iterrows():
         print(f"  {r.episode:22} {r.series_used}")
     print()
+    fallback = stocks_on_fallback({b for blocks in portfolios.values() for b in blocks.index})
+    if fallback:
+        print(f"⚠ {', '.join(sorted(fallback))}: no recent own-price history in "
+              "data/prices/replay_monthly.csv, so the replay used the fallback series "
+              "(VIGRX/FF_us_big_growth) instead. Run fetch_prices.py to add them.\n")
     print(f"Dip-buying dry powder above ${EMERGENCY_FUND:,} emergency fund (cash beyond EF):")
     for k, b in portfolios.items():
         print(f"  {k:22} ${b.get('CASH', 0) - EMERGENCY_FUND:>10,.0f}")

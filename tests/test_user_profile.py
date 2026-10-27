@@ -115,6 +115,22 @@ def test_old_scalar_contribution_key_is_rejected(tmp_path):
         P.load(write_profile(tmp_path, profile=bad))
 
 
+def test_candidate_negative_share_is_rejected(tmp_path):
+    # Shares still sum to 1, but shorts aren't modeled
+    bad = PROFILE_TOML.replace("us = 0.55", "us = 0.85").replace("bonds = 0.15", "bonds = -0.15")
+    with pytest.raises(P.ProfileError, match="negative share"):
+        P.load(write_profile(tmp_path, profile=bad))
+
+
+def test_candidate_reserve_usd_is_validated(tmp_path):
+    d = write_profile(tmp_path, profile=PROFILE_TOML.replace("bonds = 0.15", 'bonds = 0.15\nreserve_usd = "everywhere"'))
+    with pytest.raises(P.ProfileError, match='reserve_usd must be a dollar amount or "new_taxable"'):
+        P.load(d)
+    (d / "profile.toml").write_text(PROFILE_TOML.replace("bonds = 0.15", "bonds = 0.15\nreserve_usd = -100"))
+    with pytest.raises(P.ProfileError, match="reserve_usd is negative"):
+        P.load(d)
+
+
 def test_contribution_limits_file():
     lim = P.contribution_limits()
     assert lim["401k_employee"] == 24_500 and lim["ira"] == 7_500 and lim["401k_total_415c"] == 72_000

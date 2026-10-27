@@ -56,6 +56,9 @@ def account_state(pos=None, profile=None):
     new_cash = (mode == "frozen") & (pos.block == "CASH") & pos.account.map(lambda a: acc[a].get("cash_is_new_money", False))
     bank = pos[mode == "bank"].value_usd.sum()
     ef = profile.emergency_fund
+    if bank < ef:
+        print(f"  ⚠ bank accounts hold ${bank:,.0f}, below the ${ef:,.0f} emergency fund; "
+              "the shortfall is not made up from other accounts")
     fixed = pos[(mode == "frozen") & ~new_cash]
     capacity = {a: pos[(acct == a) & (mode == "movable")].value_usd.sum() for a in profile.allocatable_accounts()}
     capacity[profile.new_money_account] = pos[new_cash].value_usd.sum() + max(bank - ef, 0)

@@ -1,0 +1,15 @@
+[project]
+name = "diamond-hands"
+version = "0.1.0"
+description = "Scenario-modeling toolkit for measuring AI-concentration risk and choosing a rebalancing allocation"
+requires-python = ">=3.12"
+# Pinned so results are reproducible across machines and years; uv.lock has the full closure.
+# Bump deliberately (uv lock --upgrade), run the test suite, and expect pandas/numpy behavior
+# changes to be a code review, not a surprise.
+dependencies = [
+    "pandas==3.1.0",
+    "numpy==2.5.4",
+    "requests==2.34.2",
+    "yfinance==1.7.0",
+    "pytest==9.1.1",
+]
